@@ -16,26 +16,27 @@
   <img src="https://img.shields.io/badge/Clerk-Auth-6C47FF?style=for-the-badge&logo=clerk&logoColor=white" alt="Clerk">
   <img src="https://img.shields.io/badge/Cloudinary-CDN-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white" alt="Cloudinary">
   <img src="https://img.shields.io/badge/Inngest-Queues-000000?style=for-the-badge" alt="Inngest">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License MIT">
 </p>
 
 ---
 
 ## 📌 Daftar Isi
-- [Tentang Proyek (About Project)](#-tentang-proyek-about-project)
+- [Tentang Proyek](#-tentang-proyek)
 - [Fitur Utama](#-fitur-utama)
 - [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
 - [Arsitektur & Struktur Direktori](#-arsitektur--struktur-direktori)
 - [Instalasi & Panduan Setup](#-instalasi--panduan-setup)
 - [Konfigurasi Environment Variables](#-konfigurasi-environment-variables)
-- [Manual Book & Panduan Penggunaan](#-manual-book--panduan-penggunaan)
+- [Panduan Penggunaan Fitur](#-panduan-penggunaan-fitur)
+  - [1. Sisi Pembeli (Customer)](#1-sisi-pembeli-customer)
+  - [2. Sisi Penjual (Seller Dashboard)](#2-sisi-penjual-seller-dashboard)
 - [Workflow Asynchronous & Background Jobs](#-workflow-asynchronous--background-jobs)
 - [Database Seeding & Migrasi](#-database-seeding--migrasi)
-- [Kontribusi & Lisensi](#-kontribusi--lisensi)
+- [Pengembang & Kontak](#-pengembang--kontak)
 
 ---
 
-## 📖 Tentang Proyek (About Project)
+## 📖 Tentang Proyek
 
 **Capit Store** adalah aplikasi web toko online modern yang dirancang secara khusus untuk memfasilitasi transaksi dan katalog produk sandal kasual & kontemporer berkualitas tinggi, hasil kolaborasi bersama brand kreatif **Ndaweg Studio**.
 
@@ -86,34 +87,35 @@ Proyek ini menghadirkan antarmuka belanja yang interaktif, responsif, dan elegan
 capit-store/
 ├── app/
 │   ├── (public pages)/
-│   │   ├── page.jsx                # Landing Page & Produk Unggulan
-│   │   ├── all-products/           # Katalog Seluruh Produk
-│   │   ├── product/[id]/           # Detail Spesifik Produk Sandal
-│   │   ├── cart/                   # Keranjang Belanja
-│   │   ├── add-address/            # Tambah / Edit Alamat Pengiriman
-│   │   ├── my-orders/              # Riwayat & Pelacakan Pesanan User
-│   │   ├── about-us/               # Profil Brand Capit Store & Ndaweg Studio
-│   │   └── contact/                # Kontak Customer Service
-│   ├── seller/                     # Panel Khusus Penjual (Admin Dashboard)
-│   │   ├── page.jsx                # Tambah Produk Baru
-│   │   ├── product-list/           # Manajemen Etalase Produk
-│   │   └── orders/                 # Manajemen Pesanan Masuk
-│   └── api/                        # Next.js API Routes (Backend Endpoints)
-│       ├── inngest/                # Handler Sinkronisasi Webhook Inngest
-│       ├── product/                # Endpoint CRUD Produk Sandal
-│       ├── cart/                   # Endpoint Keranjang Belanja
-│       ├── order/                  # Endpoint Pembuatan & Status Order
-│       └── user/                   # Endpoint Sinkronisasi User
-├── components/                     # Komponen UI Reusable (Navbar, Footer, ProductCard, dll)
-├── config/                         # Konfigurasi Database (db.js) & Inngest (inngest.js)
-├── context/                        # Global State React Context (AppContext.jsx)
-├── models/                         # Schema Mongoose (User, Product, Order, Address)
-├── assets/                         # Aset Gambar, Ikon, dan Dummy Product Data
-├── docs/                           # Dokumentasi Tambahan
-├── CONTRIBUTING.md                 # Panduan Kontribusi Pengembang
-├── LICENSE                         # Lisensi Perangkat Lunak (MIT)
-├── MANUAL_BOOK.md                  # Buku Panduan Pengguna & Seller Lengkap
-└── README.md                       # Dokumentasi Utama Repositori
+│   │   ├── page.jsx                # Landing page & produk unggulan
+│   │   ├── all-products/           # Katalog seluruh produk sandal
+│   │   ├── product/[id]/           # Detail spesifikasi & foto produk
+│   │   ├── cart/                   # Keranjang belanja pembeli
+│   │   ├── add-address/            # Tambah dan kelola alamat pengiriman
+│   │   ├── my-orders/              # Riwayat dan status pesanan
+│   │   ├── about-us/               # Profil brand Capit Store & Ndaweg
+│   │   └── contact/                # Formulir kontak customer service
+│   ├── seller/                     # Panel dashboard khusus penjual
+│   │   ├── page.jsx                # Formulir tambah produk baru
+│   │   ├── product-list/           # Manajemen daftar etalase produk
+│   │   └── orders/                 # Pemantauan pesanan pelanggan
+│   └── api/                        # Backend API Routes Next.js
+│       ├── inngest/                # Webhook sync user Clerk ke MongoDB
+│       ├── product/                # Endpoint CRUD produk
+│       ├── cart/                   # Endpoint keranjang belanja
+│       ├── order/                  # Endpoint transaksi pesanan
+│       └── user/                   # Endpoint profil pengguna
+├── assets/                         # Aset statis gambar, logo, dan ikon
+├── components/                     # Komponen UI reusable (Navbar, Footer, Cards)
+├── config/                         # Konfigurasi MongoDB (db.js) & Inngest
+├── context/                        # React Context global state (AppContext.jsx)
+├── models/                         # Schema database Mongoose (User, Product, Order)
+├── public/                         # Berkas publik statis
+├── .env.example                    # Template variabel lingkungan
+├── .gitignore                      # Pengecualian berkas git
+├── import-rar.mjs                  # Skrip impor data JSON/RAR ke database
+├── seed.mjs                        # Skrip seeder data awal produk
+└── README.md                       # Dokumentasi utama proyek
 `
 
 ---
@@ -180,21 +182,20 @@ NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=xxx
 
 ---
 
-## 📚 Manual Book & Panduan Penggunaan
+## 🧭 Panduan Penggunaan Fitur
 
-> 📘 Panduan terperinci langkah demi langkah untuk pembeli dan pengelola toko dapat dibaca pada berkas **[MANUAL_BOOK.md](MANUAL_BOOK.md)**.
+### 1. Sisi Pembeli (Customer)
+1. **Login Akun**: Klik tombol profil di Navbar, masuk menggunakan akun Google atau Email OTP via Clerk.
+2. **Pilih Produk**: Cari sandal di Beranda atau halaman *All Products*. Klik produk untuk membaca material sol, varian, dan promo harga.
+3. **Keranjang Belanja**: Klik *Add to Cart*. Atur jumlah pasang sandal yang diinginkan pada halaman Keranjang.
+4. **Isi Alamat**: Daftarkan nama penerima, nomor handphone kurir, dan alamat lengkap pada form *Add Address*.
+5. **Checkout & Pantau Pesanan**: Konfirmasi order dan pantau status barang Anda pada menu *My Orders*.
 
-### Ringkasan Alur Pembeli:
-1. **Login Akun**: Masuk menggunakan tombol profil di Navbar dengan akun Google atau Email.
-2. **Pilih Sandal**: Telusuri produk di Beranda atau halaman All Products.
-3. **Masukkan Keranjang**: Tentukan kuantitas dan klik *Add to Cart*.
-4. **Isi Alamat**: Daftarkan alamat pengiriman penerima paket secara jelas.
-5. **Konfirmasi Pesanan**: Lakukan pemesanan dan pantau status paket di menu *My Orders*.
-
-### Ringkasan Alur Penjual:
-1. Akses halaman /seller.
-2. Masukkan nama sandal, deskripsi material sol & strap, pilih kategori, isi harga & harga diskon, serta unggah foto produk.
-3. Pantau daftar order pelanggan yang masuk melalui menu *Orders*.
+### 2. Sisi Penjual (Seller Dashboard)
+1. Buka halaman /seller pada browser setelah login.
+2. **Tambah Produk**: Isi nama sandal, deskripsi spesifikasi, kategori, harga normal, harga diskon, serta unggah foto produk ke Cloudinary.
+3. **Kontrol Stok**: Pantau ketersediaan barang pada halaman /seller/product-list.
+4. **Kelola Pesanan**: Buka menu /seller/orders untuk melihat transaksi masuk dan rincian pengiriman pembeli.
 
 ---
 
@@ -219,11 +220,8 @@ node import-rar.mjs
 
 ---
 
-## 🤝 Kontribusi & Lisensi
-
-Proyek ini didistribusikan di bawah lisensi open-source **[MIT License](LICENSE)**.
+## 👤 Pengembang & Kontak
 
 * **Pengembang**: **Khonif Zakaria** ([NivDev](https://github.com/Khoniv)) & **Ndaweg Studio**
 * **GitHub**: [@Khoniv](https://github.com/Khoniv)
 * **Email**: [oniefzk11@gmail.com](mailto:oniefzk11@gmail.com)
-* Panduan pengajuan fitur dan kontribusi: **[CONTRIBUTING.md](CONTRIBUTING.md)**
