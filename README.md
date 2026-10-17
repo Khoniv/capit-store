@@ -55,13 +55,13 @@ Proyek ini menghadirkan antarmuka belanja yang interaktif, responsif, dan elegan
 - **Riwayat Pesanan (My Orders)**: Pelacakan status pemesanan (*Order Placed*, *Shipped*, *Delivered*).
 - **Formulir Kontak Terintegrasi**: Kirim pesan langsung ke admin melalui EmailJS.
 
-### 💼 Sisi Penjual & Admin (Seller Dashboard - /seller)
+### 💼 Sisi Penjual & Admin (Seller Dashboard - `/seller`)
 - **Dashboard Ringkasan**: Statistik penjualan dan navigasi cepat.
-- **Tambah Produk Baru (/seller)**:
+- **Tambah Produk Baru (`/seller`)**:
   - Formulir input judul, deskripsi lengkap, harga normal, harga promo diskon, kategori, dan stok barang.
   - Multi-upload gambar produk secara langsung ke **Cloudinary CDN**.
-- **Manajemen Katalog (/seller/product-list)**: Tabel daftar produk aktif dengan aksi hapus produk.
-- **Manajemen Pesanan (/seller/orders)**: Pemantauan pesanan pelanggan yang masuk secara *real-time*.
+- **Manajemen Katalog (`/seller/product-list`)**: Tabel daftar produk aktif dengan aksi hapus produk.
+- **Manajemen Pesanan (`/seller/orders`)**: Pemantauan pesanan pelanggan yang masuk secara *real-time*.
 
 ---
 
@@ -83,7 +83,7 @@ Proyek ini menghadirkan antarmuka belanja yang interaktif, responsif, dan elegan
 
 ## 📂 Arsitektur & Struktur Direktori
 
-`	ext
+```text
 capit-store/
 ├── app/
 │   ├── (public pages)/
@@ -116,7 +116,7 @@ capit-store/
 ├── import-rar.mjs                  # Skrip impor data JSON/RAR ke database
 ├── seed.mjs                        # Skrip seeder data awal produk
 └── README.md                       # Dokumentasi utama proyek
-`
+```
 
 ---
 
@@ -125,36 +125,36 @@ capit-store/
 Pastikan Anda telah memasang **Node.js (v18.18+ atau v20+)** dan **Git** pada komputer Anda.
 
 ### 1. Clone Repositori
-`ash
+```bash
 git clone https://github.com/Khoniv/capit-store.git
 cd capit-store
-`
+```
 
 ### 2. Install Dependensi
-`ash
+```bash
 npm install
-`
+```
 
-### 3. Setup Berkas Lingkungan (.env)
-Salin file template .env.example:
-`ash
+### 3. Setup Berkas Lingkungan (`.env`)
+Salin file template `.env.example`:
+```bash
 cp .env.example .env
-`
+```
 Lengkapi nilai variabel sesuai dengan akun layanan Anda (Clerk, MongoDB, Cloudinary, Inngest, EmailJS).
 
 ### 4. Jalankan Development Server
-`ash
+```bash
 npm run dev
-`
+```
 Buka browser dan akses aplikasi di: **[http://localhost:3000](http://localhost:3000)**.
 
 ---
 
 ## ⚙️ Konfigurasi Environment Variables
 
-Buka file .env dan pastikan konfigurasi berikut terisi:
+Buka file `.env` dan pastikan konfigurasi berikut terisi:
 
-`env
+```env
 # Format Mata Uang Tampilan
 NEXT_PUBLIC_CURRENCY=Rp.
 
@@ -178,7 +178,7 @@ CLOUDINARY_API_SECRET=xxx
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_xxx
 NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_xxx
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=xxx
-`
+```
 
 ---
 
@@ -192,17 +192,17 @@ NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=xxx
 5. **Checkout & Pantau Pesanan**: Konfirmasi order dan pantau status barang Anda pada menu *My Orders*.
 
 ### 2. Sisi Penjual (Seller Dashboard)
-1. Buka halaman /seller pada browser setelah login.
+1. Buka halaman `/seller` pada browser setelah login.
 2. **Tambah Produk**: Isi nama sandal, deskripsi spesifikasi, kategori, harga normal, harga diskon, serta unggah foto produk ke Cloudinary.
-3. **Kontrol Stok**: Pantau ketersediaan barang pada halaman /seller/product-list.
-4. **Kelola Pesanan**: Buka menu /seller/orders untuk melihat transaksi masuk dan rincian pengiriman pembeli.
+3. **Kontrol Stok**: Pantau ketersediaan barang pada halaman `/seller/product-list`.
+4. **Kelola Pesanan**: Buka menu `/seller/orders` untuk melihat transaksi masuk dan rincian pengiriman pembeli.
 
 ---
 
 ## ⚡ Workflow Asynchronous & Background Jobs
 
 Proyek ini menggunakan **Inngest** untuk menangani sinkronisasi event penting:
-* **Sinkronisasi User Clerk ke MongoDB**: Ketika user baru mendaftar atau mengubah profilnya via Clerk, webhook Clerk dikirimkan ke /api/inngest. Inngest mengeksekusi function di config/inngest.js untuk membuat/memperbarui data dokumen pengguna di MongoDB tanpa memblokir thread antarmuka.
+* **Sinkronisasi User Clerk ke MongoDB**: Ketika user baru mendaftar atau mengubah profilnya via Clerk, webhook Clerk dikirimkan ke `/api/inngest`. Inngest mengeksekusi function di `config/inngest.js` untuk membuat/memperbarui data dokumen pengguna di MongoDB tanpa memblokir thread antarmuka.
 * **Order Processing Automation**: Menangani mutasi status pesanan secara konsisten dan aman.
 
 ---
@@ -210,13 +210,13 @@ Proyek ini menggunakan **Inngest** untuk menangani sinkronisasi event penting:
 ## 🗄️ Database Seeding & Migrasi
 
 Jika Anda ingin mengisi katalog awal produk sandal secara cepat, jalankan script seeder bawaan:
-`ash
+```bash
 node seed.mjs
-`
+```
 Atau jika Anda memiliki file cadangan database JSON:
-`ash
+```bash
 node import-rar.mjs
-`
+```
 
 ---
 
