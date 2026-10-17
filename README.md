@@ -1,141 +1,159 @@
-# 🩴 Capit Store (Ndaweg Studio)
+﻿<p align="center">
+  <img src="assets/logo.png" alt="Capit Store Logo" width="200">
+</p>
 
-> **Platform E-Commerce Sandal Kontemporer & Modern** yang dibangun menggunakan **Next.js 15 (App Router)**, **React 19**, **Tailwind CSS**, **MongoDB Atlas**, **Clerk Authentication**, **Cloudinary**, dan **Inngest**.
+<h1 align="center">🩴 Capit Store (Ndaweg Studio)</h1>
+
+<p align="center">
+  <strong>Platform E-Commerce Modern & Kontemporer Khusus Sandal Kasual Karya Anak Bangsa</strong>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Khoniv/capit-store"><img src="https://img.shields.io/badge/Next.js-15.3.2-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js"></a>
+  <img src="https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4.1-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/MongoDB-Atlas_6.x-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+  <img src="https://img.shields.io/badge/Clerk-Auth-6C47FF?style=for-the-badge&logo=clerk&logoColor=white" alt="Clerk">
+  <img src="https://img.shields.io/badge/Cloudinary-CDN-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white" alt="Cloudinary">
+  <img src="https://img.shields.io/badge/Inngest-Queues-000000?style=for-the-badge" alt="Inngest">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License MIT">
+</p>
 
 ---
 
 ## 📌 Daftar Isi
-- [Tentang Project](#-tentang-project)
+- [Tentang Proyek (About Project)](#-tentang-proyek-about-project)
 - [Fitur Utama](#-fitur-utama)
 - [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
-- [Arsitektur & Struktur Folder](#-arsitektur--struktur-folder)
+- [Arsitektur & Struktur Direktori](#-arsitektur--struktur-direktori)
 - [Instalasi & Panduan Setup](#-instalasi--panduan-setup)
 - [Konfigurasi Environment Variables](#-konfigurasi-environment-variables)
-- [Manual Book (Buku Panduan Penggunaan)](#-manual-book-buku-panduan-penggunaan)
-  - [1. Pengguna / Pembeli (Customer)](#1-pengguna--pembeli-customer)
-  - [2. Panel Penjual / Admin (Seller Dashboard)](#2-panel-penjual--admin-seller-dashboard)
-- [Workflow & Background Jobs](#-workflow--background-jobs)
+- [Manual Book & Panduan Penggunaan](#-manual-book--panduan-penggunaan)
+- [Workflow Asynchronous & Background Jobs](#-workflow-asynchronous--background-jobs)
+- [Database Seeding & Migrasi](#-database-seeding--migrasi)
 - [Kontribusi & Lisensi](#-kontribusi--lisensi)
 
 ---
 
-## 📖 Tentang Project
+## 📖 Tentang Proyek (About Project)
 
-**Capit Store** adalah aplikasi web toko online modern yang dirancang khusus untuk memfasilitasi transaksi dan katalog produk sandal kasual & premium karya anak bangsa (kolaborasi bersama *Ndaweg Studio*). 
+**Capit Store** adalah aplikasi web toko online modern yang dirancang secara khusus untuk memfasilitasi transaksi dan katalog produk sandal kasual & kontemporer berkualitas tinggi, hasil kolaborasi bersama brand kreatif **Ndaweg Studio**.
 
-Project ini menggabungkan antarmuka interaktif responsif (*mobile-friendly*), performa kencang dengan Next.js App Router & Turbopack, sinkronisasi event webhook otomatis via Inngest, autentikasi aman via Clerk, serta database NoSQL MongoDB.
+Proyek ini menghadirkan antarmuka belanja yang interaktif, responsif, dan elegan dengan memanfaatkan performa tinggi **Next.js 15 App Router & Turbopack**, autentikasi berbasis cloud yang aman via **Clerk**, manajemen event webhook dan antrean background menggunakan **Inngest**, penyimpanan gambar multi-file di **Cloudinary CDN**, serta database NoSQL terdistribusi menggunakan **MongoDB Atlas**.
 
 ---
 
 ## ✨ Fitur Utama
 
 ### 🛒 Sisi Pembeli (Customer Facing)
-- **Autentikasi & Profil**: Registrasi/login cepat dan aman melalui Clerk (Google OAuth, Email, dll).
-- **Katalog Produk Dinamis**: Pencarian, filter kategori, penyesuaian harga promo/asli, dan rincian spesifikasi sandal.
-- **Keranjang Belanja (Cart)**: Tambah item, ubah jumlah kuantitas (*quantity*), serta sinkronisasi otomatis dengan database pengguna.
-- **Manajemen Alamat**: Input dan pemilihan alamat pengiriman lengkap (nama, nomor telepon, kode pos, alamat rinci).
-- **Proses Checkout & Order**: Checkout pesanan dengan kalkulasi subtotal dan biaya otomatis.
-- **Pelacakan Pesanan (My Orders)**: Melihat status riwayat pesanan (*Order Placed*, pengiriman, detail barang, dll).
-- **Halaman Kontak Interaktif**: Kirim pesan langsung ke admin dengan integrasi EmailJS.
-- **Halaman Tentang Kami (About Us)**: Profil brand Capit Store & Ndaweg Studio.
+- **Autentikasi Aman**: Registrasi/login instan melalui Clerk (Google OAuth & Email OTP).
+- **Katalog Produk Interaktif**: Menampilkan daftar produk dengan filter kategori, harga promo (*offer price*), kalkulasi diskon, dan spesifikasi material sandal.
+- **Keranjang Belanja Real-Time (Shopping Cart)**: Sinkronisasi item keranjang belanja ke database pengguna dengan kontrol kuantitas dinamis.
+- **Manajemen Alamat Pengiriman**: Pengguna dapat menyimpan beberapa alamat lengkap dengan nomor telepon aktif untuk kurir pengiriman.
+- **Proses Checkout Transparan**: Kalkulasi subtotal barang dan estimasi ongkir otomatis.
+- **Riwayat Pesanan (My Orders)**: Pelacakan status pemesanan (*Order Placed*, *Shipped*, *Delivered*).
+- **Formulir Kontak Terintegrasi**: Kirim pesan langsung ke admin melalui EmailJS.
 
-### 💼 Sisi Penjual (Seller / Admin Panel)
-- **Dashboard Seller**: Ringkasan performa penjualan dan navigasi cepat.
-- **Tambah Produk (Add Product)**:
-  - Input nama produk, deskripsi, harga normal (*offer price*), harga diskon.
-  - Multi-upload gambar produk langsung ke **Cloudinary CDN**.
-  - Pemilihan kategori sandal.
-- **Daftar Produk (Product List)**: Manajemen katalog produk, melihat status stok, dan kontrol hapus produk.
-- **Manajemen Pesanan (Orders Management)**: Melihat seluruh transaksi masuk dari pembeli secara real-time.
+### 💼 Sisi Penjual & Admin (Seller Dashboard - /seller)
+- **Dashboard Ringkasan**: Statistik penjualan dan navigasi cepat.
+- **Tambah Produk Baru (/seller)**:
+  - Formulir input judul, deskripsi lengkap, harga normal, harga promo diskon, kategori, dan stok barang.
+  - Multi-upload gambar produk secara langsung ke **Cloudinary CDN**.
+- **Manajemen Katalog (/seller/product-list)**: Tabel daftar produk aktif dengan aksi hapus produk.
+- **Manajemen Pesanan (/seller/orders)**: Pemantauan pesanan pelanggan yang masuk secara *real-time*.
 
 ---
 
 ## 🛠️ Teknologi yang Digunakan
 
-| Komponen | Teknologi |
-|---|---|
-| **Framework Web** | [Next.js 15 (App Router)](https://nextjs.org/) |
-| **Library UI** | [React 19](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/) |
-| **Ikon & Animasi** | [Lucide React](https://lucide.dev/), [Framer Motion](https://www.framer.com/motion/) |
-| **Database & ODM** | [MongoDB](https://www.mongodb.com/), [Mongoose](https://mongoosejs.com/) |
-| **Autentikasi** | [Clerk Auth](https://clerk.com/) |
-| **Media Storage** | [Cloudinary](https://cloudinary.com/) |
-| **Background Queue / Sync** | [Inngest](https://www.inngest.com/) |
-| **Email Service** | [EmailJS](https://www.emailjs.com/) |
-| **Notifikasi UI** | [React Hot Toast](https://react-hot-toast.com/) |
+| Kategori | Teknologi | Deskripsi |
+|---|---|---|
+| **Framework Web** | [Next.js 15.3 (App Router)](https://nextjs.org/) | React Server Components & Turbopack engine |
+| **Library UI** | [React 19](https://react.dev/) + [Tailwind CSS 3.4](https://tailwindcss.com/) | Styling responsif dan modern |
+| **Ikon & Motion** | [Lucide React](https://lucide.dev/) + [Framer Motion](https://www.framer.com/motion/) | Animasi micro-interaction halus |
+| **Database & ODM** | [MongoDB Atlas](https://www.mongodb.com/) + [Mongoose 8.14](https://mongoosejs.com/) | Schema-based NoSQL storage |
+| **Autentikasi** | [Clerk Auth 6.19](https://clerk.com/) | User management & social login |
+| **Media Cloud Storage** | [Cloudinary 2.6](https://cloudinary.com/) | Image upload & CDN auto-optimization |
+| **Event-Driven Backend** | [Inngest 3.35](https://www.inngest.com/) | Webhook handler & background synchronization |
+| **Notifikasi UI** | [React Hot Toast](https://react-hot-toast.com/) | Feedback notifikasi interaktif |
+| **Email Service** | [EmailJS](https://www.emailjs.com/) | Layanan formulir pesan kontak tanpa backend email server |
 
 ---
 
-## 📂 Arsitektur & Struktur Folder
+## 📂 Arsitektur & Struktur Direktori
 
-```text
+`	ext
 capit-store/
 ├── app/
 │   ├── (public pages)/
-│   │   ├── page.jsx                # Landing Page & Produk Utama
-│   │   ├── all-products/           # Halaman Seluruh Produk
-│   │   ├── product/[id]/           # Detail Spesifik Produk
+│   │   ├── page.jsx                # Landing Page & Produk Unggulan
+│   │   ├── all-products/           # Katalog Seluruh Produk
+│   │   ├── product/[id]/           # Detail Spesifik Produk Sandal
 │   │   ├── cart/                   # Keranjang Belanja
-│   │   ├── add-address/            # Tambah / Kelola Alamat
-│   │   ├── my-orders/              # Riwayat Pesanan User
-│   │   ├── about-us/               # Halaman Tentang Capit Store
-│   │   └── contact/                # Kontak & Hubungi Kami
-│   ├── seller/                     # Panel Khusus Penjual (Dashboard)
+│   │   ├── add-address/            # Tambah / Edit Alamat Pengiriman
+│   │   ├── my-orders/              # Riwayat & Pelacakan Pesanan User
+│   │   ├── about-us/               # Profil Brand Capit Store & Ndaweg Studio
+│   │   └── contact/                # Kontak Customer Service
+│   ├── seller/                     # Panel Khusus Penjual (Admin Dashboard)
 │   │   ├── page.jsx                # Tambah Produk Baru
-│   │   ├── product-list/           # Daftar Katalog Produk
+│   │   ├── product-list/           # Manajemen Etalase Produk
 │   │   └── orders/                 # Manajemen Pesanan Masuk
-│   └── api/                        # Next.js API Routes (Backend)
-│       ├── inngest/                # Handler Webhook & Sync Inngest
-│       ├── product/                # Endpoint CRUD Produk
-│       ├── cart/                   # Endpoint Cart User
+│   └── api/                        # Next.js API Routes (Backend Endpoints)
+│       ├── inngest/                # Handler Sinkronisasi Webhook Inngest
+│       ├── product/                # Endpoint CRUD Produk Sandal
+│       ├── cart/                   # Endpoint Keranjang Belanja
 │       ├── order/                  # Endpoint Pembuatan & Status Order
 │       └── user/                   # Endpoint Sinkronisasi User
-├── components/                     # Reusable Components (Navbar, Footer, Cards, dll)
-├── config/                         # Konfigurasi Database & Integrasi (db.js, inngest.js)
-├── context/                        # React Context Global State (AppContext.jsx)
+├── components/                     # Komponen UI Reusable (Navbar, Footer, ProductCard, dll)
+├── config/                         # Konfigurasi Database (db.js) & Inngest (inngest.js)
+├── context/                        # Global State React Context (AppContext.jsx)
 ├── models/                         # Schema Mongoose (User, Product, Order, Address)
-├── assets/                         # Static Assets & Icons
-└── public/                         # Public Static Files
-```
+├── assets/                         # Aset Gambar, Ikon, dan Dummy Product Data
+├── docs/                           # Dokumentasi Tambahan
+├── CONTRIBUTING.md                 # Panduan Kontribusi Pengembang
+├── LICENSE                         # Lisensi Perangkat Lunak (MIT)
+├── MANUAL_BOOK.md                  # Buku Panduan Pengguna & Seller Lengkap
+└── README.md                       # Dokumentasi Utama Repositori
+`
 
 ---
 
 ## 🚀 Instalasi & Panduan Setup
 
-Pastikan Anda telah menginstal **Node.js (v18.18+ atau v20+)** dan **Git** di perangkat Anda.
+Pastikan Anda telah memasang **Node.js (v18.18+ atau v20+)** dan **Git** pada komputer Anda.
 
 ### 1. Clone Repositori
-```bash
+`ash
 git clone https://github.com/Khoniv/capit-store.git
 cd capit-store
-```
+`
 
 ### 2. Install Dependensi
-```bash
+`ash
 npm install
-```
+`
 
-### 3. Setup Konfigurasi Environment
-Salin file `.env.example` menjadi `.env`:
-```bash
+### 3. Setup Berkas Lingkungan (.env)
+Salin file template .env.example:
+`ash
 cp .env.example .env
-```
-Isi nilai variabel sesuai dengan akun layanan Anda (Clerk, MongoDB, Cloudinary, Inngest, EmailJS).
+`
+Lengkapi nilai variabel sesuai dengan akun layanan Anda (Clerk, MongoDB, Cloudinary, Inngest, EmailJS).
 
 ### 4. Jalankan Development Server
-```bash
+`ash
 npm run dev
-```
-Akses aplikasi melalui browser di [http://localhost:3000](http://localhost:3000).
+`
+Buka browser dan akses aplikasi di: **[http://localhost:3000](http://localhost:3000)**.
 
 ---
 
 ## ⚙️ Konfigurasi Environment Variables
 
-Buka file `.env` dan lengkapi konfigurasi berikut:
+Buka file .env dan pastikan konfigurasi berikut terisi:
 
-```env
-# Currency Formatting
+`env
+# Format Mata Uang Tampilan
 NEXT_PUBLIC_CURRENCY=Rp.
 
 # Clerk Authentication (Dapatkan di https://dashboard.clerk.com)
@@ -143,9 +161,9 @@ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxx
 CLERK_SECRET_KEY=sk_test_xxx
 
 # Database MongoDB Atlas
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/capit-store
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/capitstore
 
-# Inngest (Event Queue & Webhook Sync)
+# Inngest (Event Queue & Webhook Sync di https://app.inngest.com)
 INNGEST_SIGNING_KEY=signkey-prod-xxx
 INNGEST_EVENT_KEY=xxx
 
@@ -154,82 +172,58 @@ CLOUDINARY_CLOUD_NAME=xxx
 CLOUDINARY_API_KEY=xxx
 CLOUDINARY_API_SECRET=xxx
 
-# EmailJS (Untuk Form Hubungi Kami di https://www.emailjs.com)
+# EmailJS (Untuk Form Kontak di https://www.emailjs.com)
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_xxx
 NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_xxx
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=xxx
-```
+`
 
 ---
 
-## 📚 MANUAL BOOK (Buku Panduan Penggunaan)
+## 📚 Manual Book & Panduan Penggunaan
 
-### 1. Pengguna / Pembeli (Customer)
+> 📘 Panduan terperinci langkah demi langkah untuk pembeli dan pengelola toko dapat dibaca pada berkas **[MANUAL_BOOK.md](MANUAL_BOOK.md)**.
 
-#### A. Mendaftar & Masuk Akun
-1. Buka website **Capit Store**.
-2. Klik tombol profil/masuk di bagian kanan atas pada **Navbar**.
-3. Pilih metode login yang diinginkan (Google Akun atau Email/Kata Sandi).
-4. Setelah berhasil masuk, status login akan aktif dan keranjang belanja otomatis tersinkronisasi.
+### Ringkasan Alur Pembeli:
+1. **Login Akun**: Masuk menggunakan tombol profil di Navbar dengan akun Google atau Email.
+2. **Pilih Sandal**: Telusuri produk di Beranda atau halaman All Products.
+3. **Masukkan Keranjang**: Tentukan kuantitas dan klik *Add to Cart*.
+4. **Isi Alamat**: Daftarkan alamat pengiriman penerima paket secara jelas.
+5. **Konfirmasi Pesanan**: Lakukan pemesanan dan pantau status paket di menu *My Orders*.
 
-#### B. Menjelajahi & Memilih Sandal
-1. Masuk ke halaman **All Products** atau scroll di halaman Beranda.
-2. Klik salah satu kartu produk sandal untuk membuka halaman **Detail Produk**.
-3. Di halaman detail, periksa foto produk, deskripsi, varian ukuran, dan harga.
-4. Klik **"Add To Cart"** untuk menyimpan ke keranjang, atau **"Buy Now"** untuk langsung memproses pesanan.
-
-#### C. Keranjang Belanja & Pengaturan Alamat
-1. Klik ikon **Keranjang (Cart)** pada Navbar.
-2. Anda dapat mengubah jumlah pasang sandal yang ingin dibeli atau menghapus item.
-3. Klik tombol **"Proceed to Checkout"**.
-4. Jika belum menambahkan alamat, sistem akan mengarahkan ke form **Add Address**:
-   - Masukkan Nama Lengkap, Nomor Handphone / WhatsApp aktif.
-   - Masukkan Kode Pos, Kota, Provinsi, dan Detail Jalan / Nomor Rumah.
-   - Klik **"Save Address"**.
-
-#### D. Menyelesaikan Pesanan & Riwayat Transaksi
-1. Pilih alamat pengiriman yang aktif.
-2. Pilih metode pembayaran yang tersedia.
-3. Konfirmasi pesanan Anda. Setelah berhasil, Anda akan dialihkan ke halaman konfirmasi.
-4. Untuk memantau status barang, buka menu **"My Orders"** di dropdown profil Anda.
+### Ringkasan Alur Penjual:
+1. Akses halaman /seller.
+2. Masukkan nama sandal, deskripsi material sol & strap, pilih kategori, isi harga & harga diskon, serta unggah foto produk.
+3. Pantau daftar order pelanggan yang masuk melalui menu *Orders*.
 
 ---
 
-### 2. Panel Penjual / Admin (Seller Dashboard)
+## ⚡ Workflow Asynchronous & Background Jobs
 
-Akses panel admin melalui tautan `/seller` pada browser setelah login.
-
-#### A. Menambah Produk Sandal Baru (`/seller`)
-1. Klik menu **"Add Product"** di sidebar penjual.
-2. Unggah foto produk pada slot gambar yang tersedia (format PNG/JPG, disarankan resolusi jernih).
-3. Masukkan **Product Name** (Contoh: *Capit Signature Edition Olive*).
-4. Tuliskan deskripsi lengkap mengenai material sol, strap, keunggulan, dan ketahanan produk.
-5. Tentukan **Kategori** produk sandal.
-6. Masukkan **Product Price** (harga normal) dan **Offer Price** (harga promosi setelah diskon).
-7. Klik tombol **"Add"**. Sistem akan mengunggah gambar ke Cloudinary dan menyimpan data ke MongoDB.
-
-#### B. Mengelola Daftar Produk (`/seller/product-list`)
-1. Klik menu **"Product List"** di sidebar.
-2. Anda akan melihat seluruh daftar sandal yang sedang aktif dijual.
-3. Anda dapat memeriksa harga, kategori, dan menekan tombol hapus (*action delete*) jika produk sudah tidak diproduksi.
-
-#### C. Memantau Pesanan Masuk (`/seller/orders`)
-1. Buka menu **"Orders"**.
-2. Pantau daftar transaksi masuk, item yang dipesan pembeli, detail alamat pengiriman, status pembayaran, serta tanggal transaksi.
-3. Perbarui status pengiriman barang jika pesanan sedang diproses atau dikirim.
+Proyek ini menggunakan **Inngest** untuk menangani sinkronisasi event penting:
+* **Sinkronisasi User Clerk ke MongoDB**: Ketika user baru mendaftar atau mengubah profilnya via Clerk, webhook Clerk dikirimkan ke /api/inngest. Inngest mengeksekusi function di config/inngest.js untuk membuat/memperbarui data dokumen pengguna di MongoDB tanpa memblokir thread antarmuka.
+* **Order Processing Automation**: Menangani mutasi status pesanan secara konsisten dan aman.
 
 ---
 
-## ⚡ Workflow & Background Jobs
+## 🗄️ Database Seeding & Migrasi
 
-Proyek ini menggunakan **Inngest** untuk menangani sinkronisasi asynchronous:
-- **Sinkronisasi User Clerk ke MongoDB**: Ketika pengguna mendaftar atau memperbarui profil melalui Clerk, Inngest menerima webhook event (`clerk/user.created`, `clerk/user.updated`, `clerk/user.deleted`) dan langsung mengupdate dokumen user di database MongoDB secara aman di latar belakang.
-- **Workflow Order Processing**: Otomatisasi data pesanan tanpa membebani thread utama server.
+Jika Anda ingin mengisi katalog awal produk sandal secara cepat, jalankan script seeder bawaan:
+`ash
+node seed.mjs
+`
+Atau jika Anda memiliki file cadangan database JSON:
+`ash
+node import-rar.mjs
+`
 
 ---
 
-## 📄 Lisensi & Kontribusi
+## 🤝 Kontribusi & Lisensi
 
-Dikembangkan oleh **Khoniv** & didukung oleh **Ndaweg Studio**.
-Proyek ini dibuat untuk keperluan portofolio, pengembangan komersial, dan edukasi e-commerce modern.
-Pull request dan saran perbaikan fitur sangat dipersilakan!
+Proyek ini didistribusikan di bawah lisensi open-source **[MIT License](LICENSE)**.
+
+* **Pengembang**: **Khonif Zakaria** ([NivDev](https://github.com/Khoniv)) & **Ndaweg Studio**
+* **GitHub**: [@Khoniv](https://github.com/Khoniv)
+* **Email**: [oniefzk11@gmail.com](mailto:oniefzk11@gmail.com)
+* Panduan pengajuan fitur dan kontribusi: **[CONTRIBUTING.md](CONTRIBUTING.md)**
