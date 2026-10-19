@@ -4,12 +4,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useAppContext } from "@/context/AppContext";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
 const categories = ["All", "Sandal Gunung", "Sandal heels", "Sandal jepit", "Sandal Platform", "Sandal Slide"];
 
-const AllProducts = () => {
+const AllProductsContent = () => {
     const { products } = useAppContext();
     const searchParams = useSearchParams();
     const initialQuery = searchParams.get("q") || "";
@@ -90,4 +90,10 @@ const AllProducts = () => {
     );
 };
 
-export default AllProducts;
+export default function AllProducts() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-[#FAF8F5]" />}>
+            <AllProductsContent />
+        </Suspense>
+    );
+}
